@@ -4,42 +4,43 @@ const underscore = require('underscore')
 const lodash=require("lodash")
 
 const router = express.Router();
+// Create an API for GET /movies that returns a list of movies. Define an array of movies in your code and return the value in response.
 
-router.get('/test-me', function (req, res) {
-    myHelper.printDate()
-    myHelper.getCurrentMonth()
-    myHelper.getCohortData()
+router.get('/movies', function (req, res) {
     
-    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
-    console.log('The first element received from underscope function is '+firstElement)
-    res.send('My first ever api!')
+    console.log('The request objects is '+ JSON.stringify(req.params))
+    array1=["‘Rang de basanti, ‘The shining’, ‘Lord of the rings’, ‘Batman begins’"]
+    for(i=0;i<=array1.length;i++){
+    console.log(array1[i])
+    console.log(".........1........")}
+    res.send('Done')
 });
-    router.get('/day12', function (req, res) {
-        const array =["jan","feb","march","april","may","june","july","august","septemb","oct","nov","dec"]
-        console.log(lodash.chunk(array,4))
-        console.log(".................1..................")
-        const array1 = [1,3,5,7,9,11,13,15,17,19]
-        console.log(lodash.tail(array1))
-        console.log(".................2..................")
-        const a =[50,51]
-        const b =[52,53]
-        const c =[54,55]
-        const d =[56,57]
-        const e =[58,59]
-        console.log(lodash.union(a,b,c,d,e))
-        console.log(".................3..................")
-         res.send('Hello User!!')
-     });
+// Create an API GET /movies/:indexNumber (For example GET /movies/1 is a valid request and it should return the movie in your array at index 1). You can define an array of movies again in your api
+// Create an API for GET /movies that returns a list of movies. Define an array of movies in your code and return the value in response.
+
+router.get('/movies/:indexNumber', function (req, res) {
+    array1=["‘Rang de basanti, ‘The shining’, ‘Lord of the rings’, ‘Batman begins’"]
+    
+    for(i=0;i<=array1.length;i++){
+        const funct=req.params.indexNumber
+let final=""
+        if(funct<array[i]){
+            final =array1[funct]
+            }
+            else
+            console.log("Does not Exist")
+    console.log(array1[i])
+    console.log(array1[i].length)}
+    console.log('The request objects is '+ JSON.stringify(req.params))
+    console.log('Movie name is '+req.params.indexNumber)
+    console.log(".........2 and 3........")
+    res.send('final')
+});
+
+
+   
 router.get('/candidates', function(req, res){
-    console.log('Query paramters for this request are '+JSON.stringify(req.query))
-    let gender = req.query.gender
-    let state = req.query.state
-    let district = req.query.district
-    console.log('State is '+state)
-    console.log('Gender is '+gender)
-    console.log('District is '+district)
-    let candidates = ['Akash','Suman']
-    res.send(candidates)
+    
 })
 
 router.get('/candidates/:canidatesName', function(req, res){
